@@ -1,4 +1,9 @@
 package org.javaboy.meeting.mapper;
 
-public class DepartmentMapper {
+import org.javaboy.meeting.model.Department;
+
+public interface DepartmentMapper {
+
+    Department getDepById(Integer id);
+
 }
