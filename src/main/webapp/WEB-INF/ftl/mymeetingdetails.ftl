@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>CoolMeeting会议管理系统</title>
-        <link rel="stylesheet" href="styles/common.css"/>
+        <link rel="stylesheet" href="/styles/common.css"/>
         <style type="text/css">
             #divfrom{
                 float:left;
@@ -224,7 +224,7 @@
                             </tr>
                             <tr>
                                 <td class="command" colspan="2">
-                                    <input type="button" class="clickbutton" value="撤销会议" onclick="window.location.href='cancelmeeting.html';"/>
+                                    <input type="button" class="clickbutton" value="撤销会议" onclick="window.location.href='cancelmeeting.ftl';"/>
                                     <input type="button" class="clickbutton" value="返回" onclick="window.history.back();"/>
                                 </td>
                             </tr>
@@ -236,7 +236,7 @@
         <div class="page-footer">
             <hr/>
             更多问题，欢迎联系<a href="mailto:webmaster@eeg.com">管理员</a>
-            <img src="images/footer.png" alt="CoolMeeting"/>
+            <img src="/images/footer.png" alt="CoolMeeting"/>
         </div>
     </body>
 </html>

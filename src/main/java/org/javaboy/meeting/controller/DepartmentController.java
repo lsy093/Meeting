@@ -1,22 +1,14 @@
 package org.javaboy.meeting.controller;
 
-import org.javaboy.meeting.model.Department;
-import org.javaboy.meeting.service.DepartmentService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-@RestController
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+@RequestMapping("/admin")
 public class DepartmentController {
-
-    @Autowired
-    DepartmentService departmentService;
-
-    @GetMapping("/dep")
-    public void getDepById(Integer id) {
-        Department dep = departmentService.getDepById(id);
-        System.out.println("dep=" + dep);
+    @RequestMapping("/departments")
+    public String departments() {
+        return "departments";
     }
-
-
 }

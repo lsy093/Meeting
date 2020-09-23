@@ -22,33 +22,47 @@ public class LoginController {
     DepartmentService departmentService;
 
     @RequestMapping("/")
-    public String login(){
+    public String login() {
         return "login";
     }
+
     @PostMapping("/doLogin")
     public String doLogin(String username, String password, Model model, HttpSession httpSession) {
-        Employee employee =employeeService.doLogin(username,password);
-        if(employee==null){
-            model.addAttribute("error","用户名或密码输入有误，登陆失败");
+        Employee employee = employeeService.doLogin(username, password);
+        if (employee == null) {
+            model.addAttribute("error", "用户名或密码输入有误，登陆失败");
             return "forward:/";
-        }else {
-            if(employee.getStatus()==0){
-                model.addAttribute("error","用户待审批");
+        } else {
+            if (employee.getStatus() == 0) {
+                model.addAttribute("error", "用户待审批");
                 return "forward:/";
-            }else if(employee.getStatus()==2){
-                model.addAttribute("error","用户审批未通过");
+            } else if (employee.getStatus() == 2) {
+                model.addAttribute("error", "用户审批未通过");
                 return "forward:/";
-        }else{
-            httpSession.setAttribute("currentuser",employee);
-            return "redirect:/notifications";
+            } else {
+                httpSession.setAttribute("currentuser", employee);
+                return "redirect:/notifications";
             }
         }
     }
+
     @RequestMapping("/register")
-    public String register(Model model){
-        List<Department>deps=departmentService.getAllDeps();
-        model.addAttribute("deps",deps);
+    public String register(Model model) {
+        List<Department> deps = departmentService.getAllDeps();
+        model.addAttribute("deps", deps);
         return "register";
     }
-}
 
+    @RequestMapping("/doReg")
+    public String doRge(Model model, Employee employee) {
+        System.out.println("test");
+        Integer result = employeeService.doRge(employee);
+        if (result == 1) {
+            return "redirect:/";
+        } else {
+            model.addAttribute("error", "用户注册失败");
+            model.addAttribute("employee", employee);
+            return "forward:/register";
+        }
+    }
+}

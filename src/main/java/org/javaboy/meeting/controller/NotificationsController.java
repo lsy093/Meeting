@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class NotificationsController {
-    @GetMapping ("/notifications")
-    public  String notifications(){
+    @GetMapping("/notifications")
+    public String notifications() {
         return "notifications";
     }
 }

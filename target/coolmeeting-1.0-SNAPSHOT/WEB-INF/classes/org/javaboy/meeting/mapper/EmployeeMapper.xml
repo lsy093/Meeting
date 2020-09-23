@@ -5,4 +5,16 @@
     <select id="loadEmpByUsername" resultType="org.javaboy.meeting.model.Employee">
         select * from employee where username=#{username};
     </select>
+
+    <select id="getAllEmpsByStatus" resultType="org.javaboy.meeting.model.Employee">
+        select * from employee where status=#{status};
+    </select>
+
+    <insert id="doReg" parameterType="org.javaboy.meeting.model.Employee">
+        insert into employee(employeename,username,phone,email,status,departmentid,password,role) value (#{employeename},#{username},#{phone},#{email},#{status},#{departmentid},#{password},#{role});
+    </insert>
+
+    <update id="updateStatus">
+        update employee set status=#{status} where employeeid=#{employeeid};
+    </update>
 </mapper>
